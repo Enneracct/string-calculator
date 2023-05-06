@@ -7,7 +7,7 @@ public class StringCalculator {
         else if (numbers.length()==1) return Integer.parseInt(numbers);
 
         // Split the string by comma separator
-        String[] numArr = numbers.split(",");
+        String[] numArr = numbers.split("[,\\s]+");
 
         int[] parsedNumbers = new int[numArr.length];
 
