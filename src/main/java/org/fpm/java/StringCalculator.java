@@ -9,11 +9,15 @@ public class StringCalculator {
         // Split the string by comma separator
         String[] numArr = numbers.split(",");
 
+        int[] parsedNumbers = new int[numArr.length];
 
-        // Convert the strings to integers and add them together
-        int num1 = Integer.parseInt(numArr[0]);
-        int num2 = Integer.parseInt(numArr[1]);
+        int result = 0;
 
-        return num1 + num2;
+        for (int i = 0; i < numArr.length; i++){
+               parsedNumbers[i] = Integer.parseInt(numArr[i]);
+               result += parsedNumbers[i];
+        }
+
+        return result;
     }
 }

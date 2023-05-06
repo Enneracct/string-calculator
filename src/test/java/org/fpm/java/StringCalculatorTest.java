@@ -19,5 +19,10 @@ public class StringCalculatorTest {
         StringCalculator calculate = new StringCalculator();
         assertEquals(3, calculate.add("1,2"));
     }
-
+    @Test
+    public void several_numbers(){
+        StringCalculator calculate = new StringCalculator();
+        assertEquals(6, calculate.add("1,2,3"));
+        assertEquals(15, calculate.add("1,2,3,4,5"));
+    }
 }
