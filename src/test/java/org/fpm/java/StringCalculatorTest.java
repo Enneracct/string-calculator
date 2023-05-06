@@ -31,4 +31,11 @@ public class StringCalculatorTest {
         assertEquals(6, calculate.add("1\n2\n3"));
         assertEquals(15, calculate.add("1,2\n3\n4,5"));
     }
+    @Test
+    public void user_defined_delimiter(){
+        StringCalculator calculate = new StringCalculator();
+        assertEquals(6, calculate.add("//[!]\n1!2!3"));
+        assertEquals(15, calculate.add("//[;]\n1;2;3;4;5"));
+        assertEquals(15, calculate.add("//[*]\n1*2*3*4*5"));
+    }
 }
