@@ -17,25 +17,37 @@ public class StringCalculatorTest {
     @Test
     public void test_two_numbers() {
         StringCalculator calculate = new StringCalculator();
-        assertEquals(3, calculate.add("1,2"));
+        assertEquals(3, calculate.add("1,\n2"));
     }
     @Test
     public void several_numbers(){
         StringCalculator calculate = new StringCalculator();
         assertEquals(6, calculate.add("1,2,3"));
-        assertEquals(15, calculate.add("1,2,3,4,5"));
+        assertEquals(42, calculate.add("1,2,30,4,5"));
     }
     @Test
     public void newline_character_and_comma(){
         StringCalculator calculate = new StringCalculator();
         assertEquals(6, calculate.add("1\n2\n3"));
-        assertEquals(15, calculate.add("1,2\n3\n4,5"));
+        assertEquals(80, calculate.add("1,2\n32\n40,5"));
     }
     @Test
     public void user_defined_delimiter(){
         StringCalculator calculate = new StringCalculator();
         assertEquals(6, calculate.add("//[!]\n1!2!3"));
-        assertEquals(15, calculate.add("//[;]\n1;2;3;4;5"));
-        assertEquals(15, calculate.add("//[*]\n1*2*3*4*5"));
+        assertEquals(47, calculate.add("//[;]\n1;2;35;4;5"));
+        assertEquals(47, calculate.add("//[*]\n1*2*35*4*5"));
+    }
+    @Test
+    public void negative_number_exception_handling(){
+        StringCalculator calculate = new StringCalculator();
+        try {
+            calculate.add("//[*]\n1*-2*35*-4*-5");
+        } catch (NumberFormatException e){
+            System.out.println(e.getMessage());
+            System.out.println("Negative number exception was processed.\n");
+
+        }
+
     }
 }

@@ -1,5 +1,7 @@
 package org.fpm.java;
 import java.util.regex.Pattern;
+import java.util.ArrayList;
+import java.util.List;
 
 public class StringCalculator {
     public int add(String numbers) {
@@ -23,16 +25,22 @@ public class StringCalculator {
         // Splitting the string using the delimiter
         String[] numArr = numbersString.split(delimiter);
 
-        // Creating an array to store parsed integers
-        int[] parsedNumbers = new int[numArr.length];
+        List<Integer> negativeNumbers = new ArrayList<>(); // Creating a list to store negative numbers
 
-        // The result variable that stores sum of parsed integers
         int result = 0;
 
-        for (int i = 0; i < numArr.length; i++) {
-            // Parsing each string number to int
-            parsedNumbers[i] = Integer.parseInt(numArr[i]);
-            result += parsedNumbers[i];
+        for (String number : numArr) {
+            int parsedNumber = Integer.parseInt(number);
+
+            if (parsedNumber < 0) {
+                negativeNumbers.add(parsedNumber); // Storing negative numbers
+            }
+
+            result += parsedNumber;
+        }
+        if (!negativeNumbers.isEmpty()) {
+            String message = "\nParsed negative numbers: " + negativeNumbers;
+            throw new NumberFormatException(message);
         }
 
         return result;
