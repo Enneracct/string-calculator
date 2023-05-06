@@ -31,13 +31,15 @@ public class StringCalculator {
 
         for (String number : numArr) {
             int parsedNumber = Integer.parseInt(number);
+            if (parsedNumber<=1000){
+                if (parsedNumber < 0) {
+                    negativeNumbers.add(parsedNumber); // Storing negative numbers
+                }
 
-            if (parsedNumber < 0) {
-                negativeNumbers.add(parsedNumber); // Storing negative numbers
+                result += parsedNumber;
             }
-
-            result += parsedNumber;
         }
+
         if (!negativeNumbers.isEmpty()) {
             String message = "\nParsed negative numbers: " + negativeNumbers;
             throw new NumberFormatException(message);

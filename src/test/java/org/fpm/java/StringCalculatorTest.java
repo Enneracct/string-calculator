@@ -36,7 +36,7 @@ public class StringCalculatorTest {
         StringCalculator calculate = new StringCalculator();
         assertEquals(6, calculate.add("//[!]\n1!2!3"));
         assertEquals(47, calculate.add("//[;]\n1;2;35;4;5"));
-        assertEquals(47, calculate.add("//[*]\n1*2*35*4*5"));
+        assertEquals(47, calculate.add("//[***]\n1***2***35***4***5"));
     }
     @Test
     public void negative_number_exception_handling(){
@@ -46,8 +46,12 @@ public class StringCalculatorTest {
         } catch (NumberFormatException e){
             System.out.println(e.getMessage());
             System.out.println("Negative number exception was processed.\n");
-
         }
-
+    }
+    @Test
+    public void big_integers(){
+        StringCalculator calculate = new StringCalculator();
+        assertEquals(6, calculate.add("1\n2\n3\n1001"));
+        assertEquals(1003, calculate.add("1,2,1000"));
     }
 }
